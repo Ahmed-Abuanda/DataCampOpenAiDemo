@@ -1,9 +1,15 @@
 version: 0.1
 
 phases:
+  prebuild:
+    commands:
+      - docker login --username $DOCKERHUB_USERNAME --password $DOCKERHUB_PASS
   build:
     commands:
       - echo Build started
       - echo Building the docker image
       - docker build -t $IMAGE_REPO_NAME .
 
+artifacts:
+  files:
+    - Dockerrun.aws.json
