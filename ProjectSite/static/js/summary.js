@@ -34,7 +34,7 @@ sendButton.addEventListener("click", () => {
         Machinemessagerow.appendChild(Machinemessage)
         chatMessages.appendChild(Machinemessagerow);
 
-        run_sentiment_analysis(messageText, Machinemessage)
+        run_text_summary(messageText, Machinemessage)
     }
 });
 
@@ -44,25 +44,16 @@ messageInput.addEventListener("keyup", (event) => {
     }
 });
 
-function run_sentiment_analysis(text, message_div){
+function run_text_summary(text, message_div){
     $.ajax({
-        url: "/run_sentiment_analysis",
+        url: "/run_text_summary",
         method: 'POST',
         data: {"text_prompt": text,},
         success: function (response) {
-            status = response.result
+            summary = response.summary
 
-            if (status=='Positive'){
-                message_div.classList.add('positiveMessage')
-                message_div.innerHTML = 'The given message is <b>Positive</b>'
-            }
-            if (status=='Negative'){
-                message_div.classList.add('negativeMessage')
-                message_div.innerHTML = 'The given message is <b>Negative</b>'
-            }
-            if (status=='Neutral'){
-                message_div.innerHTML = 'The given message is <b>Neutral</b>'
-            }
+            message_div.innerText = summary
+
         }
     })
 

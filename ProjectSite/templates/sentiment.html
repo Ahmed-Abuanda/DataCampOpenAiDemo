@@ -1,0 +1,23 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block stylesheets %}
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+{% endblock %}
+{% block content %}
+<div id="chat-container">
+    <div id="chat-messages">
+        <div class="message-row"><div class="message other-person-message">Hello I am a friend sentiment analysis bot!</div></div>
+        <div class="message-row"><div class="message other-person-message">Feel free to write me any message! I will let you know if it is a Positive, Negative or Neutral message.</div></div>
+    </div>
+    <div id="input-container">
+        <input type="text" id="message-input" placeholder="Type a message...">
+        <button id="send-button">
+            <i class="material-icons" style="font-size: 18px">send</i>
+        </button>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="{% static 'js/sentiment.js' %}"></script>
+{% endblock %}

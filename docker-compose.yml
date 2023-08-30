@@ -8,7 +8,7 @@ services:
     env_file:
       - .env
     build:
-      context: scripts
+      context: .
     ports:
       - "8000:8000"
     command: gunicorn ProjectSite.wsgi:application --bind 0.0.0.0:8000 --timeout 300
@@ -27,4 +27,3 @@ volumes:
   static:
 
   media:
-

@@ -1,23 +1,10 @@
 {% extends 'base/base.html' %}
 {% load static %}
-{% block stylesheets %}
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-{% endblock %}
 {% block content %}
-<div id="chat-container">
-    <div id="chat-messages">
-        <div class="message-row"><div class="message other-person-message">Hello I am a friend sentiment analysis bot!</div></div>
-        <div class="message-row"><div class="message other-person-message">Feel free to write me any message! I will let you know if it is a Positive, Negative or Neutral message.</div></div>
-        <div class="message-row right"><div class="message user-message">Test</div></div>
-    </div>
-    <div id="input-container">
-        <input type="text" id="message-input" placeholder="Type a message...">
-        <button id="send-button">
-            <i class="material-icons" style="font-size: 18px">send</i>
-        </button>
-    </div>
+<div class="Title">Ahmed Abunada's</br>Openai Demonstration</div>
+<div class="Mainbutton-container">
+    <button class="Mainbutton" onclick="window.location.href = '{%  url 'main:sentiment_page' %}'"><img src="{% static 'img/sentiment.png' %}"></br>Sentiment Analysis</button>
+    <button class="Mainbutton" onclick="window.location.href = '{%  url 'main:keywords_page' %}'"><img src="{% static 'img/keyword.png' %}"></br>Keyword Extraction</button>
+    <button class="Mainbutton" onclick="window.location.href = '{%  url 'main:summary_page' %}'"><img src="{% static 'img/summary.png' %}"></br>Text Summary</button>
 </div>
-{% endblock %}
-{% block scripts %}
-<script src="{% static 'js/sentiment.js' %}"></script>
 {% endblock %}

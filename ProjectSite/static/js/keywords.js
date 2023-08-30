@@ -34,7 +34,7 @@ sendButton.addEventListener("click", () => {
         Machinemessagerow.appendChild(Machinemessage)
         chatMessages.appendChild(Machinemessagerow);
 
-        run_sentiment_analysis(messageText, Machinemessage)
+        run_keyword_extraction(messageText, Machinemessage)
     }
 });
 
@@ -44,25 +44,25 @@ messageInput.addEventListener("keyup", (event) => {
     }
 });
 
-function run_sentiment_analysis(text, message_div){
+function run_keyword_extraction(text, message_div){
     $.ajax({
-        url: "/run_sentiment_analysis",
+        url: "/run_keyword_extraction",
         method: 'POST',
         data: {"text_prompt": text,},
         success: function (response) {
-            status = response.result
+            keywords = response.keywords
 
-            if (status=='Positive'){
-                message_div.classList.add('positiveMessage')
-                message_div.innerHTML = 'The given message is <b>Positive</b>'
+            keyword_list = document.createElement('ul')
+
+            for (keyword of keywords){
+                keyword_item = document.createElement('li')
+                keyword_item.innerText = keyword
+                keyword_list.appendChild(keyword_item)
             }
-            if (status=='Negative'){
-                message_div.classList.add('negativeMessage')
-                message_div.innerHTML = 'The given message is <b>Negative</b>'
-            }
-            if (status=='Neutral'){
-                message_div.innerHTML = 'The given message is <b>Neutral</b>'
-            }
+
+            message_div.innerHTML = "The keywords I found from the given text are:"
+            message_div.appendChild(keyword_list)
+
         }
     })
 

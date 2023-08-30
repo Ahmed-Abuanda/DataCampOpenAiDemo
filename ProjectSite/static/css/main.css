@@ -42,6 +42,15 @@ body {
     display: inline-block;
 }
 
+.positiveMessage{
+    background-color: #007BFF !important;
+    color: #fff !important;
+}
+.negativeMessage{
+    background-color: #FF2511 !important;
+    color: #fff !important;
+}
+
 .user-message {
     background-color: #28a745;
     color: #fff;
@@ -83,4 +92,70 @@ body {
     border-radius: 5px;
     padding: 10px 20px;
     cursor: pointer;
+}
+
+@keyframes bouncing-loader {
+  to {
+    opacity: 0.5;
+    transform: translate3d(0, -4px, 0);
+  }
+}
+.bouncing-loader {
+  display: flex;
+  justify-content: center;
+    padding-top: 5px;
+}
+
+.bouncing-loader > div {
+  width: 8px;
+  height: 8px;
+  margin: 2px;
+  background: #8385aa;
+  border-radius: 50%;
+  animation: bouncing-loader 0.4s infinite alternate;
+}
+
+.bouncing-loader > div:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.bouncing-loader > div:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.Mainbutton-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Mainbutton {
+    min-width: 450px;
+    background-color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 40px 80px;
+    font-size: 32px;
+    margin: 0 20px;
+    cursor: pointer;
+    font-weight: bolder;
+    transition: transform 0.3s;
+    text-align: center;
+}
+
+.Mainbutton:hover {
+    transform: scale(1.1);
+}
+
+.Mainbutton img{
+    width: 100px;
+    margin-bottom: 25px;
+}
+
+.Title{
+    position: absolute;
+    font-size: 72px;
+    font-weight: bolder;
+    text-align: center;
+    top: 100px;
 }
