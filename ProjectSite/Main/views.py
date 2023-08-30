@@ -3,6 +3,9 @@ from django.http import JsonResponse
 from django.shortcuts import render
 import boto3
 import openai
+import os
+
+os.environ['AWS_DEFAULT_REGION'] = 'us-east-1'
 
 ssm = boto3.client("ssm")
 
